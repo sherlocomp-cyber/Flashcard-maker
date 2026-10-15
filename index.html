@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><title>Arabic Flashcard Maker A4</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Buat flashcard kosakata Arab-Indonesia siap cetak di kertas A4 dengan sisi depan dan belakang sejajar. Offline, tanpa akun.">
+<meta name="theme-color" content="#0f766e">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="vendor/fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+<style id="ps">@page{size:A4 portrait;margin:0}</style>
+<script src="vendor/html2canvas.min.js"></script>
+<script src="vendor/jspdf.umd.min.js"></script>
+</head><body>
+<header><h1>ARABIC FLASHCARD MAKER A4</h1><button id="dk" type="button" aria-label="Mode gelap">🌓</button></header>
+<main>
+<section class="pn"><h2>1. Paste data kosakata</h2>
+<textarea id="inp" placeholder="كِتَابٌ	Buku&#10;قَلَمٌ = Pena&#10;مَدْرَسَةٌ | Sekolah&#10;(Format TAB, =, :, | atau salinan Google Sheets/Excel dikenali otomatis)"></textarea>
+<details class="guide" open><summary>ℹ️ Panduan format data &amp; template</summary>
+<p>Satu kosakata = satu baris. Kolom dipisah <b>TAB</b> (otomatis saat menyalin dari Google Sheets/Excel), atau tanda <b>|</b> <b>=</b> <b>:</b>.</p>
+<div class="tw2"><table class="gt"><thead><tr><th>Kolom A</th><th>Kolom B</th><th>Kolom C</th><th>Kolom D</th></tr></thead><tbody>
+<tr><td>Arab <em>(wajib)</em></td><td>Indonesia <em>(wajib)</em></td><td>Transliterasi <em>(opsional)</em></td><td>Bab <em>(opsional)</em></td></tr>
+<tr><td class="ar">أَسَدٌ</td><td>Singa</td><td>asadun</td><td>Hewan</td></tr>
+<tr><td class="ar">كِتَابٌ</td><td>Buku</td><td>kitābun</td><td>Sekolah</td></tr></tbody></table></div>
+<ol><li><b>Google Sheets:</b> siapkan 2–4 kolom seperti tabel di atas, blok semua sel, salin (Ctrl+C), lalu tempel di kotak di atas dan tekan <b>Buat Flashcard</b>.</li>
+<li>Baris judul (mis. <i>Arab | Indonesia</i>) dikenali dan dilewati otomatis.</li>
+<li>Kolom C kosong? Tekan <b>Transliterasi otomatis</b> di panel Data (teks Arab perlu berharakat).</li>
+<li>Untuk file: di Google Sheets pilih <i>File → Download → CSV</i>, lalu pakai tombol <b>Impor CSV</b>.</li></ol>
+<div class="row"><button id="tplcsv" type="button">⬇️ Unduh template CSV</button><button id="tplex" type="button">📝 Isi contoh ke kotak</button></div></details>
+<div class="row"><button class="pri" id="mk" type="button">✨ BUAT FLASHCARD</button>
+<label class="chk"><input type="checkbox" id="dd"> Hapus duplikat</label>
+<label class="chk"><input type="checkbox" id="ad"> Tambahkan ke data yang ada</label></div>
+<div id="sepbox" class="row" hidden><span class="warn">Format data belum dapat dikenali dengan yakin. Pilih pemisah:</span>
+<select id="sepsel"><option value="\t">TAB</option><option>|</option><option>=</option><option>:</option></select><button id="sepok" type="button">Terapkan</button></div>
+<div id="msg" class="msg"></div></section>
+
+<div class="cols">
+<section class="pn"><h2>2. Data <span id="cnt"></span></h2>
+<div class="row" style="margin:0 0 8px"><input type="search" id="q" placeholder="🔎 Cari kosakata..." style="flex:1;min-width:130px;padding:8px;border:1px solid var(--bd);border-radius:8px;background:var(--bg)">
+<select id="sort" aria-label="Urutan"><option value="paste">Urutan paste</option><option value="ar">Arab</option><option value="id">A–Z Indonesia</option><option value="rnd">Acak</option></select>
+<button id="add" type="button">＋ Baris</button><button id="bimg" type="button">🖼 Gambar massal</button><button id="aimg" type="button">😀 Gambar otomatis</button><input type="file" id="bimgf" accept="image/*" multiple hidden><button id="atr" type="button" title="Isi kolom transliterasi dari teks Arab berharakat">🔤 Transliterasi otomatis</button><button id="csvb" type="button">📥 Impor CSV</button><input type="file" id="csvf" accept=".csv,.tsv,.txt,.xls,.xlsx" hidden><button id="clr" type="button">🗑 Hapus semua</button></div>
+<div class="tw"><table><thead><tr><th>Geser · No</th><th id="h1">Arab</th><th id="h2">Indonesia</th><th>Transliterasi</th><th>Bab</th><th>Gambar</th><th>Status</th><th></th></tr></thead><tbody id="tb"></tbody></table></div></section>
+
+<section class="pn set"><h2>3. Pengaturan</h2>
+<label>Judul proyek<input type="text" id="title" placeholder="Kosakata Bahasa Arab Kelas 3"></label>
+<label class="chk"><input type="checkbox" id="showT"> Tampilkan judul di halaman</label>
+<label>Kertas<select disabled><option>A4 (210 × 297 mm)</option></select></label>
+<label>Preset cepat<select id="preset"><option value="">Pilih preset kelas…</option><option value="k13">Kelas 1–3 (ceria, 4 kartu, huruf besar)</option><option value="k46">Kelas 4–6 (modern, 6 kartu)</option><option value="smp">SMP/MTs (minimal, 8 kartu)</option><option value="prem">Dewasa (premium, 9 kartu)</option></select></label>
+<label>Jenis kartu<select id="lang"><option value="ai">Arab → Indonesia (terjemah)</option><option value="aa">Arab → Arab (mis. lawan kata, jamak)</option><option value="ii">Indonesia → Indonesia (mis. istilah → arti)</option></select></label>
+<label>Orientasi<select id="ori"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></label>
+<label>Kartu per A4<select id="cpp"><option>4</option><option selected>6</option><option>8</option><option>9</option></select></label>
+<label>Mode printer Anda (duplex)<select id="flip"><option value="long">Flip on Long Edge</option><option value="short">Flip on Short Edge</option></select></label>
+<label>Geser sisi belakang X (mm) — koreksi printer<input type="number" id="ox" step="0.1" value="0"></label>
+<label>Geser sisi belakang Y (mm)<input type="number" id="oy" step="0.1" value="0"></label>
+<label>Skala belakang lebar X (%) — koreksi printer<input type="number" id="sx" step="0.05" value="100"></label>
+<label>Skala belakang tinggi Y (%)<input type="number" id="sy" step="0.05" value="100"></label>
+<label>Garis potong dicetak di<select id="cutm"><option value="front">Depan saja (disarankan, tidak terlihat meleset)</option><option value="both">Depan &amp; belakang</option></select></label>
+<label>Font Arab<select id="af"><option value='"Noto Naskh Arabic"'>Naskh (Noto)</option><option value='Amiri'>Amiri (klasik)</option><option value='"Noto Kufi Arabic"'>Kufi (tegas)</option><option value='"Scheherazade New"'>Scheherazade</option><option value='Lateef'>Lateef</option></select></label>
+<label>Gambar kartu<select id="back"><option value="img">Tampilkan gambar</option><option value="txt">Tanpa gambar</option></select></label><label>Posisi gambar<select id="ipos"><option value="back">Sisi belakang</option><option value="front">Sisi depan</option><option value="both">Depan &amp; belakang</option></select></label>
+<label>Template<select id="tpl"><option value="1">1 · Kids Colorful</option><option value="2">2 · Arabic Classroom</option><option value="3">3 · Islamic Geometry</option><option value="4">4 · Minimal</option><option value="5">5 · Modern</option><option value="6">6 · Cartoon</option><option value="7">7 · Picture Card</option><option value="8">8 · Premium Arabic</option><option value="9">9 · Malam Masjid</option><option value="10">10 · Laut & Gelembung</option><option value="11">11 · Pelangi</option><option value="12">12 · Buku Tulis</option><option value="13">13 · Senja</option><option value="14">14 · Taman</option><option value="15">15 · Neon</option><option value="16">16 · Luar Angkasa</option><option value="17">17 · Sakura</option><option value="18">18 · Zamrud & Emas</option><option value="19">19 · Awan & Rumput</option><option value="20">20 · Safari</option><option value="21">21 · Arcade Retro</option><option value="22">22 · Permen</option><option value="23">23 · Batik Sogan</option><option value="24">24 · Aurora Kaca</option><option value="25">25 · Kertas Vintage</option><option value="26">26 · Pastel Lembut</option><option value="27">27 · Langit & Awan</option><option value="28">28 · Kertas Kraft</option><option value="29">29 · Papan Tulis</option><option value="30">30 · Mint Segar</option><option value="31">31 · Lavender</option><option value="32">32 · Peach Hangat</option><option value="33">33 · Monokrom Elegan</option><option value="34">34 · Hitam Emas</option><option value="35">35 · Stempel Merah</option><option value="36">36 · Bunga Mungil</option><option value="37">37 · Polkadot</option><option value="38">38 · Garis Miring</option><option value="39">39 · Gingham</option><option value="40">40 · Blueprint</option><option value="41">41 · Buku Kotak-kotak</option><option value="42">42 · Hutan Tropis</option><option value="43">43 · Gurun Pasir</option><option value="44">44 · Salju</option><option value="45">45 · Musim Gugur</option><option value="46">46 · Ramadan Lentera</option><option value="47">47 · Mozaik Hijau</option><option value="48">48 · Putih Emas Mewah</option><option value="49">49 · Navy Klasik</option><option value="50">50 · Es Krim</option><option value="51">51 · Komik Pop</option><option value="52">52 · Terminal Hijau</option><option value="53">53 · Blok Warna Berani</option><option value="54">54 · Header Warna</option><option value="55">55 · Polaroid</option><option value="56">56 · Galaksi Nebula</option><option value="57">57 · Kopi & Krim</option><option value="58">58 · Matcha</option><option value="59">59 · Pink Hati</option><option value="60">60 · Bintang Ceria</option><option value="61">61 · Garis Ganda</option><option value="62">62 · Sudut Warna</option><option value="63">63 · Pita Atas</option><option value="64">64 · Bar Bawah</option><option value="65">65 · Gelap Berwarna</option><option value="66">66 · Gradasi Warna</option><option value="67">67 · Gradasi Lembut</option><option value="68">68 · Titik-titik</option><option value="69">69 · Garis Tipis</option><option value="70">70 · Bingkai Emas Ganda</option><option value="71">71 · Lengkung Masjid</option><option value="72">72 · Mihrab Zamrud</option><option value="73">73 · Lentera Bintang</option><option value="74">74 · Bintang Delapan</option><option value="75">75 · Kaligrafi Klasik</option><option value="76">76 · Tinta Hitam</option><option value="77">77 · Malam Berbintang</option><option value="78">78 · Lingkaran Besar</option><option value="79">79 · Diagonal</option><option value="80">80 · Hologram</option><option value="81">81 · Slate Modern</option><option value="82">82 · Retro Tebal</option><option value="83">83 · Kaca Warna</option><option value="84">84 · Zaitun Krem</option><option value="85">85 · Kayu Coklat</option><option value="86">86 · Tab Folder</option><option value="87">87 · Pensil Warna</option><option value="88">88 · Ombak</option><option value="89">89 · Perisai</option><option value="90">90 · Bulat Penuh</option></select></label><button id="galb" type="button">🎨 Galeri template</button>
+<label>Warna<select id="cm"><option value="single">Satu warna</option><option value="alt">Warna bergantian</option><option value="rnd">Random harmonis</option></select></label>
+<label>Warna utama<select id="pal"></select></label><label class="chk"><input type="color" id="cpc" value="#7a5cff"> Warna kustom sendiri</label><label>Warnai latar kartu<select id="wl"><option value="">Tidak (bawaan template)</option><option value="d">Ya — latar gelap (warna tua)</option><option value="l">Ya — latar terang (warna muda)</option></select></label>
+<label>Ukuran huruf<select id="fs"><option value="uni">Seragam antar kartu (rapi)</option><option value="auto">Otomatis per kartu (maksimal)</option></select></label>
+<label>Skala huruf<input type="range" id="fsz" min="50" max="100" value="85"></label>
+<label class="chk"><input type="checkbox" id="showEx" checked> Tampilkan transliterasi</label>
+<label>Posisi transliterasi<select id="exp"><option value="front">Depan (di bawah teks Arab)</option><option value="back">Belakang (di bawah terjemahan)</option><option value="both">Depan dan belakang</option></select></label>
+<label><span>Ukuran transliterasi <span id="exszv">6</span> mm</span><input type="range" id="exsz" min="3" max="12" step="0.5" value="6"></label>
+<label class="chk"><input type="checkbox" id="exauto" checked> Kecilkan otomatis jika teks panjang</label>
+<label>Gaya transliterasi<select id="exst"><option value="normal">Tegak</option><option value="italic">Miring</option></select></label>
+<label>Ketebalan transliterasi<select id="exw"><option value="400">Tipis</option><option value="600" selected>Sedang</option><option value="800">Tebal</option></select></label>
+<label>Warna transliterasi<select id="exc"><option value="">Ikuti template</option><option value="dk">Warna kartu (gelap)</option><option value="#000000">Hitam</option><option value="#555555">Abu-abu</option><option value="#ffffff">Putih</option></select></label>
+<label class="chk"><input type="checkbox" id="num" checked> Nomor kartu</label>
+<label class="chk"><input type="checkbox" id="cut" checked> Garis potong</label>
+<div class="row"><button id="sv" type="button">💾 Simpan Proyek</button><button id="ld" type="button">📂 Buka Proyek</button></div></section>
+</div>
+
+<section class="pn" id="pvsec"><h2>4. Preview A4 <span id="pgc"></span></h2>
+<div class="row" style="margin:0 0 8px"><button class="pri" id="pr" type="button">🖨 Print</button><button id="pdf" type="button">📄 Export PDF</button><button id="png" type="button">🖼 Export PNG</button><button id="tst" type="button">🧪 Tes duplex</button><button id="gm" type="button">🎮 Lembar latihan</button><button id="stb0" type="button">📖 Mode belajar</button><span id="wso" class="row" style="margin:0" hidden><select id="wsm" aria-label="Jenis latihan"><option value="match">Menjodohkan</option><option value="fill">Isian singkat</option><option value="mcq">Pilihan ganda</option></select><label class="chk"><input type="checkbox" id="wsk"> Kunci jawaban</label><button id="wsr" type="button">🔀 Acak ulang</button></span>
+<label class="chk">Zoom <input type="range" id="zm" min="25" max="120" value="50"></label></div>
+<div class="row" style="margin:0 0 8px"><label class="chk">Cetak <select id="pside"><option value="both">Depan + belakang</option><option value="front">Depan saja</option><option value="back">Belakang saja</option></select></label>
+<label class="chk">Halaman <input type="text" id="prng" placeholder="mis. 1-4,7" style="width:105px;padding:6px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--tx)"></label>
+<label class="chk">Bab <select id="babf"><option value="">Semua</option></select></label>
+<label class="chk">PDF per <select id="chunk"><option value="0">Semua halaman</option><option value="10">10 halaman</option><option value="20">20 halaman</option><option value="40">40 halaman</option></select></label></div>
+<div class="msg" style="font-weight:400;color:var(--mu)">Tanpa dupleks (mis. Epson L5290): pakai kertas &amp; pengaturan print yang SAMA persis untuk kedua sisi, tanda pojok kertas dengan pensil, balik seperti buku, lalu cetak “Belakang saja”. Cetak “Depan saja”, masukkan kertas kembali, lalu cetak “Belakang saja”. Saat print: pilih ukuran A4, skala 100%, margin None, aktifkan “Background graphics” dan cetak dua sisi sesuai mode printer di atas.</div>
+<div id="pvw" style="margin-top:8px"><div id="pv"></div></div></section>
+</main>
+<dialog id="gdlg" style="width:min(920px,96vw)"><div class="row" style="justify-content:space-between;margin:0 0 8px"><b>Pilih template</b><small style="color:var(--mu)">🎨 = ikut “Warna utama”; tanpa 🎨 = warna tetap (bisa diwarnai lewat “Warnai latar kartu”)</small><button id="gx" type="button">Tutup</button></div><div id="gal"></div></dialog>
+<dialog id="sdlg"><div class="row" style="justify-content:space-between;margin:0"><b id="stp"></b><button id="stx" type="button">Tutup</button></div><div id="stc"></div><div class="row" id="stbar" style="justify-content:center"><button id="st_p" type="button">←</button><button id="st_s" type="button" title="Dengar">🔊</button><button id="st_f" type="button">🔄 Balik</button><button id="st_n" type="button">→</button></div><div class="row" style="justify-content:center"><button id="st_no" type="button">✗ Belum</button><button id="st_ok" class="pri" type="button" style="font-size:15px;padding:8px 16px">✓ Hafal</button></div><div class="row" style="justify-content:center"><button id="st_sh" type="button">🔀 Acak</button><button id="st_rv" type="button">⇄ Arah</button><label class="chk"><input type="checkbox" id="st_au"> Suara otomatis</label></div></dialog>
+<dialog id="cdlg"><div class="row" id="cbox" style="justify-content:center;align-items:flex-start"></div><div class="row" style="justify-content:center"><button id="cx" type="button">Tutup</button></div></dialog>
+<dialog id="dlg"><h2 id="dt" style="margin-top:0"></h2><textarea id="dta"></textarea><div class="row"><button id="dok" class="pri" type="button">OK</button><button id="dcp" type="button">Salin</button><input type="file" id="dfi" accept=".json,application/json"><button id="dcl" type="button">Tutup</button></div></dialog>
+<script src="app.js"></script>
+</body></html>
