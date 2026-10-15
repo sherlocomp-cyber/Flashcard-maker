@@ -1,0 +1,8 @@
+{
+  "appId": "com.sherlocomp.flashcardmaker",
+  "appName": "Flashcard Arab",
+  "webDir": "www",
+  "backgroundColor": "#f4f6f3",
+  "server": { "androidScheme": "https" },
+  "android": { "allowMixedContent": false }
+}
