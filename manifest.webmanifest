@@ -1,0 +1,16 @@
+{
+ "name": "Arabic Flashcard Maker A4",
+ "short_name": "Flashcard Arab",
+ "description": "Pembuat flashcard Arab-Indonesia siap cetak A4, depan-belakang sejajar. Offline.",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "any",
+ "background_color": "#f4f6f3",
+ "theme_color": "#0f766e",
+ "lang": "id",
+ "icons": [
+  {"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"},
+  {"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable"}
+ ]
+}
