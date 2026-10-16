@@ -51,98 +51,366 @@ dialog textarea{font-size:13px;min-height:220px;font-family:monospace}
 .hasimg .fb{flex:0 0 30%}
 .no{position:absolute;bottom:2.6mm;left:0;right:0;text-align:center;font:800 7pt Nunito;opacity:.55;z-index:2}
 .card::before,.card::after{content:"";position:absolute;pointer-events:none}
-.t1{--bg0:var(--l);--a:var(--dk);border:1.4mm solid var(--c);border-radius:5mm}
-.t1::before{width:26mm;height:26mm;border-radius:50%;background:var(--c);opacity:.16;top:-9mm;right:-9mm}
-.t1::after{width:18mm;height:18mm;border-radius:50%;background:var(--c);opacity:.12;bottom:-6mm;left:-6mm}
-.t2{--bg0:#2e4a3f;--t:#f6f5ea;--a:#fff;border:2mm solid #a9743f}
-.t2::before{top:2.6mm;left:2.6mm;right:2.6mm;bottom:2.6mm;border:.3mm dashed rgba(255,255,255,.55)}
-.t2::after{width:9mm;height:1mm;background:var(--c);top:4.8mm;left:50%;margin-left:-4.5mm;border-radius:1mm}
-.t3{--bg0:#fbf6ea;--a:var(--dk)}
-.t3::before{top:2.2mm;left:2.2mm;right:2.2mm;bottom:2.2mm;border:.5mm solid var(--c)}.t3::after{top:3.8mm;left:3.8mm;right:3.8mm;bottom:3.8mm;border:.25mm solid var(--c)}
-.t4{--bg0:#fffdf8;--a:#1c1c1c;border:.25mm solid #d8d2c4}
-.t4::after{width:12mm;height:.7mm;background:var(--c);bottom:8mm;left:50%;margin-left:-6mm}
-.t4 .in{padding-bottom:10mm}
+
+/* ===== TEMA 1-30 (v2) =====
+   Tiap tema punya komposisi sendiri (bukan variasi lingkaran di pojok). Kontrak lama dipertahankan:
+   nama kelas .t1-.t30, variabel --c --l --dk --lt (tema "ikut palet" tetap ikut palet, tema warna tetap tetap tetap),
+   satuan mm agar cetak akurat. Hindari fitur yang tidak didukung html2canvas (ekspor PDF/PNG):
+   tanpa mask, clip-path, filter, conic-gradient, blend-mode. Hiasan di .in memakai z-index:-1 agar di belakang teks. */
+
+/* 1 Kids Colorful: konfeti + tepi bergelombang (palet) */
+
+/* ===== TEMA 1-30 (v2) =====
+   Tiap tema punya komposisi sendiri (bukan variasi lingkaran di pojok). Kontrak lama dipertahankan:
+   nama kelas .t1-.t30, variabel --c --l --dk --lt (tema "ikut palet" tetap ikut palet, tema warna tetap tetap tetap),
+   satuan mm agar cetak akurat. Hindari fitur yang tidak didukung html2canvas (ekspor PDF/PNG):
+   tanpa mask, clip-path, filter, conic-gradient, blend-mode. Hiasan di .in memakai z-index:-1 agar di belakang teks. */
+
+/* 1 Kids Colorful: konfeti + tepi bergelombang (palet) */
+
+/* ===== TEMA 1-30 (v2) =====
+   Tiap tema punya komposisi sendiri (bukan variasi lingkaran di pojok). Kontrak lama dipertahankan:
+   nama kelas .t1-.t30, variabel --c --l --dk --lt (tema "ikut palet" tetap ikut palet, tema warna tetap tetap tetap),
+   satuan mm agar cetak akurat. Hindari fitur yang tidak didukung html2canvas (ekspor PDF/PNG):
+   tanpa mask, clip-path, filter, conic-gradient, blend-mode. Hiasan di .in memakai z-index:-1 agar di belakang teks. */
+
+/* 1 Kids Colorful: konfeti + tepi bergelombang (palet) */
+.t1{--bg0:var(--l);--a:var(--dk);--t:var(--dk);border:1.2mm solid var(--c);border-radius:5mm}
+.t1::before{inset:0;background:radial-gradient(circle at 11% 13%,var(--c) 1.6mm,transparent 1.7mm),radial-gradient(circle at 87% 10%,var(--dk) 1.1mm,transparent 1.2mm),radial-gradient(circle at 93% 31%,var(--lt) 1.8mm,transparent 1.9mm),radial-gradient(circle at 6% 41%,var(--lt) 1.3mm,transparent 1.4mm),radial-gradient(circle at 14% 80%,var(--dk) .9mm,transparent 1mm),radial-gradient(circle at 82% 72%,var(--c) 1.2mm,transparent 1.3mm),radial-gradient(circle at 26% 7%,var(--lt) 1mm,transparent 1.1mm)}
+.t1::after{left:0;right:0;bottom:0;height:4.6mm;background:radial-gradient(circle at 3mm 4.6mm,var(--c) 2.9mm,transparent 3mm) 0 0/6mm 4.6mm repeat-x}
+.t1 .in{padding-bottom:10mm}.t1 .no{bottom:5.4mm;color:var(--dk);opacity:.7}
+
+/* 2 Arabic Classroom: papan tulis hijau berbingkai kayu + rak kapur (palet) */
+.t2{--bg0:radial-gradient(ellipse at 50% 40%,#3d6150 0,#2c473b 65%,#22392f 100%);--t:#f4f1e2;--a:#fff;border:2.2mm solid #a9743f;box-shadow:inset 0 0 0 .5mm #d9a86b}
+.t2::before{left:3.2mm;right:3.2mm;top:3.2mm;bottom:7.4mm;border:.3mm dashed rgba(255,255,255,.5);border-radius:1mm}
+.t2::after{left:5mm;bottom:2.6mm;width:14mm;height:1.5mm;border-radius:.8mm;background:var(--c);box-shadow:17mm 0 0 #f4f1e2,34mm 0 0 var(--lt)}
+.t2 .in{padding:7mm 6mm 10mm}.t2 .no{left:auto;right:5mm;bottom:2.2mm;color:#f4f1e2}
+
+/* 3 Islamic Geometry: roset bintang delapan di belakang teks + bingkai ganda (palet) */
+.t3{--bg0:#fbf6ea;--a:var(--dk);--t:var(--dk);border:.6mm solid var(--c)}
+.t3::before,.t3::after{width:44mm;height:44mm;top:50%;left:50%;margin:-22mm 0 0 -22mm;border:.45mm solid var(--c);opacity:.26}
+.t3::after{transform:rotate(45deg)}
+.t3 .in::before{content:"";position:absolute;inset:2.4mm;border:.5mm solid var(--c);z-index:-1}
+.t3 .in::after{content:"";position:absolute;inset:4mm;border:.2mm solid var(--c);z-index:-1}
+.t3 .cr{width:2.2mm;height:2.2mm;border-radius:.3mm;transform:rotate(45deg)}
+
+/* 4 Minimal: ruang kosong luas, indeks kecil, satu aksen warna (palet) */
+.t4{--bg0:#fdfcf8;--a:#1a1a1a;--t:#1a1a1a;border:.2mm solid #e4dfd0}
+.t4::before{left:6mm;right:6mm;bottom:9mm;height:.2mm;background:#cfc8b5}
+.t4::after{left:6mm;bottom:8.4mm;width:12mm;height:1.1mm;background:var(--c)}
+.t4 .in{padding:10mm 6mm 14mm}.t4 .idn{font-weight:600}
+.t4 .no{top:4.6mm;left:6mm;right:auto;bottom:auto;text-align:left;font-size:6.5pt;letter-spacing:.22em;opacity:.6;color:var(--c)}
+
+/* 5 Modern: dua seperempat lingkaran berlawanan pojok (palet) */
 .t5{--bg0:#fff;--a:#151a26;--t:#151a26}
-.t5::before{left:0;top:0;bottom:0;width:8mm;background:var(--c)}
-.t5::after{right:0;top:0;border-style:solid;border-width:0 16mm 16mm 0;border-color:transparent var(--l) transparent transparent}
-.t5 .in{padding-left:12mm}
-.t6{--bg0:var(--l);--a:#1a1a1a}
-.t6 .in{margin:3.5mm;height:calc(100% - 7mm);background:#fff;border:.7mm solid #222;border-radius:5mm;box-shadow:1.2mm 1.2mm 0 var(--c)}
+.t5::before{right:0;bottom:0;width:24mm;height:24mm;background:var(--c);border-radius:100% 0 0 0}
+.t5::after{left:0;top:0;width:11mm;height:11mm;background:var(--lt);border-radius:0 0 100% 0}
+.t5 .in{padding:8mm 7mm 13mm}.t5 .no{left:auto;right:3.4mm;bottom:2.6mm;color:#fff;opacity:.9}
+
+/* 6 Cartoon: stiker komik, titik halftone, bayangan keras (palet) */
+.t6{--bg0:var(--c);--a:#1a1a1a;--t:#1a1a1a}
+.t6::before{inset:0;background:radial-gradient(circle,rgba(255,255,255,.4) 35%,transparent 38%) 0 0/3.2mm 3.2mm}
+.t6::after{content:"\2605";top:1.6mm;right:2mm;width:8mm;height:8mm;border-radius:50%;background:#ffd43b;border:.6mm solid #1a1a1a;font:700 4.4mm/7mm serif;text-align:center;color:#1a1a1a;z-index:3;transform:rotate(12deg)}
+.t6 .in{margin:3.5mm;height:calc(100% - 7mm);background:#fff;border:.8mm solid #1a1a1a;border-radius:5mm;box-shadow:1.4mm 1.4mm 0 #1a1a1a}
 .t6 .no{bottom:6mm}
-.t7{--bg0:var(--c);--a:#111}
-.t7 .in{margin:3mm;height:calc(100% - 6mm);background:#fff;border-radius:3mm;padding:4mm}
-.t7 .ib{flex:1 1 74%}.t7 .no{color:#fff;bottom:.6mm}
-.t8{--bg0:#14213d;--t:#f4e9c9;--a:#eecf7a;border:.6mm solid #c9a24b}
-.t8::before{top:2.6mm;left:2.6mm;right:2.6mm;bottom:2.6mm;border:.25mm solid #c9a24b}
-.t8::after{width:5mm;height:5mm;border:.35mm solid #c9a24b;transform:rotate(45deg);top:5.4mm;left:50%;margin-left:-2.5mm}
-.t8 .in{padding-top:10mm}
-/* ===== TEMA BARU 9-16 ===== */
-.t9{--bg0:#1b2350;--t:#f3ecd0;--a:#ffd76a;border:1mm solid #ffd76a;border-radius:34mm 34mm 3mm 3mm}
-.t9::before{width:12mm;height:12mm;border-radius:50%;background:#ffd76a;top:5mm;left:50%;margin-left:-6mm}
-.t9::after{width:11mm;height:11mm;border-radius:50%;background:#1b2350;top:4mm;left:50%;margin-left:-2mm}
-.t9 .in{padding-top:17mm}
-.t10{--bg0:linear-gradient(#c9efff,#4aa8d8);--t:#08334d;--a:#06263a}
-.t10::before{width:130%;left:-15%;height:24mm;border-radius:50%;background:rgba(255,255,255,.38);bottom:-12mm}
-.t10::after{width:6mm;height:6mm;border-radius:50%;border:.6mm solid #fff;top:7mm;right:8mm;box-shadow:-24mm 12mm 0 -1mm rgba(255,255,255,.55)}
-.t11{--bg0:#fffdf7;--a:#1d2b3a;border:.5mm solid var(--c);border-radius:3mm}
-.t11::before{width:44mm;height:44mm;border-radius:50%;border:2.4mm solid #ff7b7b;top:-24mm;left:50%;margin-left:-22mm}
-.t11::after{width:34mm;height:34mm;border-radius:50%;border:2.4mm solid #4dabf7;top:-19mm;left:50%;margin-left:-17mm}
-.t11 .in{padding-top:12mm}
-.t12{--bg0:#fffef2;--a:#22303c;border:.25mm solid #cfcfc0}
-.t12::before{left:14mm;top:0;bottom:0;width:.4mm;background:#e57373}
-.t12::after{width:24mm;height:6mm;background:var(--c);opacity:.8;top:1.5mm;left:50%;margin-left:-12mm;transform:rotate(-3deg)}
-.t12 .in{padding-left:18mm}
-.t12 .fb span{border-bottom:.35mm solid #b8d4f0}
-.t13{--bg0:linear-gradient(170deg,#ffb36b,#ff5f7e 60%,#7b3fa0);--t:#fff;--a:#fff}
-.t13::before{width:26mm;height:26mm;border-radius:50%;background:rgba(255,244,200,.45);bottom:-9mm;right:-7mm}
-.t13::after{width:10mm;height:10mm;border-radius:50%;background:rgba(255,255,255,.28);top:6mm;left:6mm}
-.t13 .ar,.t13 .idn{text-shadow:0 .4mm 1.2mm rgba(0,0,0,.28)}
-.t14{--bg0:#f2fbe9;--a:#1f5d2a;--t:#24502b;border:1.2mm solid #6bbf59;border-radius:4mm}
-.t14::before{width:30mm;height:30mm;border-radius:50%;background:var(--c);opacity:.25;top:-12mm;left:-12mm}
-.t14::after{width:26mm;height:26mm;border-radius:50%;background:#b7e4a0;bottom:-10mm;right:-10mm}
-.t15{--bg0:#0d0b1e;--t:#fff;--a:var(--lt);border:.8mm solid var(--lt);border-radius:3mm;box-shadow:0 0 3mm var(--lt)}
-.t15::before{top:2.4mm;left:2.4mm;right:2.4mm;bottom:2.4mm;border:.25mm solid var(--lt);opacity:.6;border-radius:2mm}
-.t16{--bg0:linear-gradient(#0b1030,#2a1b5c);--t:#e9e7ff;--a:#fff}
-.t16::before{width:14mm;height:14mm;border-radius:50%;background:var(--lt);top:5mm;right:6mm}
-.t16::after{width:26mm;height:6mm;border:.7mm solid #ffd76a;border-radius:50%;top:9mm;right:0;transform:rotate(-20deg)}
-.t16 .in::before{content:"";position:absolute;width:1mm;height:1mm;border-radius:50%;background:#fff;top:5mm;left:6mm;box-shadow:14mm 16mm 0 #fff,38mm 6mm 0 #fff,8mm 44mm 0 #fff,30mm 60mm 0 #fff}
-.t16 .in{padding-top:14mm}
-/* ===== TEMA BARU 17-24 ===== */
-.t17{--bg0:#fff1f5;--a:#7a2e4d;--t:#7a2e4d;border:1mm solid #f4b6c8;border-radius:5mm}
-.t17::before{width:9mm;height:9mm;border-radius:50%;background:#f7c4d4;top:4mm;left:4mm;box-shadow:8mm 3mm 0 -1mm #f9d6e1,3mm 9mm 0 -2mm #f4b6c8}
-.t17::after{width:9mm;height:9mm;border-radius:50%;background:#f7c4d4;bottom:4mm;right:4mm;box-shadow:-8mm -3mm 0 -1mm #f9d6e1,-3mm -9mm 0 -2mm #f4b6c8}
-.t18{--bg0:#0b4f3c;--t:#f6e7b4;--a:#ffe08a;border:.6mm solid #e0b84c}
-.t18::before,.t18::after{width:9mm;height:9mm;border:.5mm solid #e0b84c;top:4mm;left:50%;margin-left:-4.5mm}
-.t18::after{transform:rotate(45deg)}.t18 .in{padding-top:14mm}
-.t19{--bg0:linear-gradient(#8fd3ff,#d9f2ff);--t:#0d4a75;--a:#0b3d63}
-.t19::before{width:12mm;height:12mm;border-radius:50%;background:#fff;top:5mm;left:6mm;box-shadow:9mm 2mm 0 -1mm #fff,4mm 5mm 0 -2mm #fff}
-.t19::after{width:130%;left:-15%;height:20mm;border-radius:50%;background:#7bd389;bottom:-13mm}
-.t19 .in{padding-bottom:9mm}
-.t20{--bg0:#f6e7c1;--t:#5a3a12;--a:#4a2f0c;border:1.2mm solid #8a5a1c;border-radius:3mm}
-.t20::before{width:18mm;height:18mm;background:#6aa84f;border-radius:0 100% 0 100%;top:1mm;left:1mm}
-.t20::after{width:18mm;height:18mm;background:#93c47d;border-radius:100% 0 100% 0;bottom:1mm;right:1mm}
-.t21{--bg0:#1a1240;--t:#fff;--a:#ffe14d;border:1.2mm solid var(--lt)}
-.t21::before,.t21::after{width:3mm;height:3mm;background:var(--lt)}
-.t21::before{top:2mm;left:2mm;box-shadow:3mm 0 0 var(--lt),0 3mm 0 var(--lt)}
-.t21::after{bottom:2mm;right:2mm;box-shadow:-3mm 0 0 var(--lt),0 -3mm 0 var(--lt)}
-.t22{--bg0:#fff8f0;--a:var(--dk);border-radius:4mm}
-.t22::after{top:0;left:0;right:0;height:4mm;background:var(--c)}
-.t22::before{width:8mm;height:8mm;border-radius:50%;background:var(--c);top:0;left:0;z-index:1;box-shadow:8mm 0 0 var(--c),16mm 0 0 var(--c),24mm 0 0 var(--c),32mm 0 0 var(--c),40mm 0 0 var(--c),48mm 0 0 var(--c),56mm 0 0 var(--c),64mm 0 0 var(--c),72mm 0 0 var(--c),80mm 0 0 var(--c),88mm 0 0 var(--c),96mm 0 0 var(--c),104mm 0 0 var(--c),112mm 0 0 var(--c),120mm 0 0 var(--c),128mm 0 0 var(--c),136mm 0 0 var(--c),144mm 0 0 var(--c)}
-.t22 .in{padding-top:12mm}
-.t23{--bg0:#f3e2c0;--t:#4a2a10;--a:#3b1f0a;border:2mm double #6b3e1d}
-.t23::before,.t23::after{width:20mm;height:20mm;border-radius:50%;border:1.2mm solid #6b3e1d;opacity:.3}
-.t23::before{top:-6mm;left:-6mm}.t23::after{bottom:-6mm;right:-6mm}
-.t24{--bg0:linear-gradient(135deg,#5b4bff,#0f9fb5);--t:#fff;--a:#fff}
-.t24 .in{margin:4mm;height:calc(100% - 8mm);background:rgba(255,255,255,.2);border:.3mm solid rgba(255,255,255,.7);border-radius:5mm}
+
+/* 7 Picture Card: foto ditempel dengan lakban, plat keterangan berwarna (palet) */
+.t7{--bg0:var(--c);--a:#111;--t:#111}
+.t7::before,.t7::after{top:.8mm;width:15mm;height:5mm;background:rgba(255,255,255,.6);z-index:3}
+.t7::before{left:7mm;transform:rotate(-5deg)}.t7::after{right:7mm;transform:rotate(4deg)}
+.t7 .in{margin:3.4mm;height:calc(100% - 6.8mm);background:#fff;border-radius:2.6mm;padding:5mm 4mm 3mm;box-shadow:0 .5mm 1.6mm rgba(0,0,0,.25)}
+.t7 .ib{flex:1 1 74%;border-radius:1.6mm;overflow:hidden}
+.t7 .fb{background:var(--l);border-radius:1.6mm}
+.t7 .no{color:#fff;bottom:.7mm}
+
+/* 8 Premium Arabic: biru malam, bingkai emas, siku emas dan ornamen berlian */
+.t8{--bg0:linear-gradient(160deg,#1a2a52,#0f1a38 60%,#0a1228);--t:#f4e9c9;--a:#eecf7a;border:.6mm solid #c9a24b}
+.t8::before{inset:2.6mm;border:.25mm solid #c9a24b}
+.t8::after{width:4.4mm;height:4.4mm;border:.4mm solid #c9a24b;background:#0f1a38;transform:rotate(45deg);top:4.8mm;left:50%;margin-left:-2.2mm}
+.t8 .in::before{content:"";position:absolute;top:7mm;left:12mm;right:12mm;height:.3mm;background:linear-gradient(90deg,#c9a24b,#c9a24b 40%,transparent 40%,transparent 60%,#c9a24b 60%,#c9a24b)}
+.t8 .in::after{content:"";position:absolute;inset:3.8mm;z-index:-1;background:linear-gradient(#c9a24b,#c9a24b) left top/5mm .45mm no-repeat,linear-gradient(#c9a24b,#c9a24b) left top/.45mm 5mm no-repeat,linear-gradient(#c9a24b,#c9a24b) right top/5mm .45mm no-repeat,linear-gradient(#c9a24b,#c9a24b) right top/.45mm 5mm no-repeat,linear-gradient(#c9a24b,#c9a24b) left bottom/5mm .45mm no-repeat,linear-gradient(#c9a24b,#c9a24b) left bottom/.45mm 5mm no-repeat,linear-gradient(#c9a24b,#c9a24b) right bottom/5mm .45mm no-repeat,linear-gradient(#c9a24b,#c9a24b) right bottom/.45mm 5mm no-repeat}
+.t8 .in{padding-top:12mm}
+
+/* 9 Malam Masjid: jendela lengkung, bulan sabit, bintang, siluet kubah dan menara */
+.t9{--bg0:linear-gradient(#171e49,#171e49 30mm,#2b3a78);--t:#f3ecd0;--a:#ffd76a;border:1mm solid #ffd76a;border-radius:34mm 34mm 3mm 3mm}
+.t9::before{width:10mm;height:10mm;border-radius:50%;background:#ffd76a;top:5mm;left:50%;margin-left:-5mm}
+.t9::after{width:9mm;height:9mm;border-radius:50%;background:#171e49;top:3.6mm;left:50%;margin-left:-1.5mm}
+.t9 .in::before{content:"";position:absolute;width:1mm;height:1mm;border-radius:50%;background:#fff;top:14mm;left:10mm;z-index:-1;box-shadow:14mm 7mm 0 #fff,40mm -2mm 0 -.2mm #fff,52mm 12mm 0 #fff,7mm 30mm 0 -.2mm #fff,49mm 32mm 0 #fff}
+.t9 .in::after{content:"";position:absolute;left:0;right:0;bottom:0;height:13mm;z-index:-1;background:radial-gradient(circle at 22% 100%,#0d1233 7mm,transparent 7.1mm),radial-gradient(circle at 74% 100%,#0d1233 8mm,transparent 8.1mm),linear-gradient(#0d1233,#0d1233) 51% 100%/2mm 12.5mm no-repeat,linear-gradient(#0d1233,#0d1233) 92% 100%/1.6mm 10mm no-repeat,linear-gradient(#0d1233,#0d1233) 0 100%/100% 4mm no-repeat}
+.t9 .in{padding:18mm 6mm 14mm}.t9 .no{color:#ffd76a}
+
+/* 10 Laut & Gelembung: air bertingkat dan gelembung naik */
+.t10{--bg0:linear-gradient(#d5f3ff,#7cc8ee 55%,#2f86c0);--t:#08334d;--a:#06263a}
+.t10::before{left:-15%;width:130%;height:22mm;border-radius:50%;background:rgba(255,255,255,.45);bottom:-9mm}
+.t10::after{left:-10%;width:120%;height:18mm;border-radius:50%;background:rgba(21,98,150,.45);bottom:-12mm}
+.t10 .in::before{content:"";position:absolute;width:5mm;height:5mm;border-radius:50%;border:.5mm solid rgba(255,255,255,.9);background:rgba(255,255,255,.25);top:7mm;right:7mm;z-index:-1;box-shadow:-18mm 10mm 0 -1.4mm rgba(255,255,255,.55),-6mm 18mm 0 -2mm rgba(255,255,255,.5),-30mm 3mm 0 -2.2mm rgba(255,255,255,.55)}
+.t10 .in{padding-bottom:15mm}
+
+/* 11 Pelangi: pelangi enam lajur dengan awan di kaki (palet pada bingkai) */
+.t11{--bg0:#fffdf7;--a:#1d2b3a;--t:#1d2b3a;border:.5mm solid var(--c);border-radius:3mm}
+.t11::before{top:4mm;left:50%;width:36mm;height:18mm;margin-left:-18mm;background:radial-gradient(circle at 50% 100%,transparent 8mm,#ff6b6b 8mm,#ff6b6b 9.6mm,#ffa94d 9.6mm,#ffa94d 11.2mm,#ffd43b 11.2mm,#ffd43b 12.8mm,#51cf66 12.8mm,#51cf66 14.4mm,#339af0 14.4mm,#339af0 16mm,#845ef7 16mm,#845ef7 17.6mm,transparent 17.6mm)}
+.t11::after{top:15mm;left:50%;width:7mm;height:7mm;margin-left:-22mm;border-radius:50%;background:#e3f0ff;box-shadow:4mm 1.6mm 0 .8mm #e3f0ff,40mm 0 0 #e3f0ff,44mm 1.6mm 0 .8mm #e3f0ff}
+.t11 .in{padding-top:24mm}
+
+/* 12 Buku Tulis: kertas bergaris, margin merah, lubang binder, selotip (palet pada selotip) */
+.t12{--bg0:repeating-linear-gradient(transparent,transparent 5.2mm,#cfe3f5 5.2mm,#cfe3f5 5.5mm),#fffef2;--a:#22303c;--t:#22303c;border:.25mm solid #cfcfc0}
+.t12::before{inset:0;background:linear-gradient(#e57373,#e57373) 15mm 0/.4mm 100% no-repeat,radial-gradient(circle at 4mm 50%,#d8d8cc 1.5mm,transparent 1.6mm) 0 0/8mm 8mm repeat-y}
+.t12::after{width:24mm;height:6mm;background:var(--c);opacity:.85;top:1.4mm;left:50%;margin-left:-12mm;transform:rotate(-3deg)}
+.t12 .in{padding:8mm 6mm 6mm 20mm}
+
+/* 13 Senja: langit gradasi ungu ke jingga, matahari terbenam, bukit siluet */
+.t13{--bg0:linear-gradient(180deg,#3b2a6e,#8c3a8f 30%,#e8557a 55%,#ff9a56 75%,#ffd27a);--t:#fff;--a:#fff}
+.t13::before{width:17mm;height:17mm;border-radius:50%;background:radial-gradient(circle,#fff6c9 55%,rgba(255,220,130,.5));right:10%;bottom:9mm}
+.t13::after{left:-20%;width:140%;height:17mm;border-radius:50% 50% 0 0;bottom:-6mm;background:#3a1f5c}
+.t13 .in::before{content:"";position:absolute;left:34%;width:90%;height:12mm;border-radius:50% 50% 0 0;bottom:-5mm;background:#2a1747;z-index:-1}
+.t13 .ar,.t13 .idn{text-shadow:0 .4mm 1.4mm rgba(0,0,0,.35)}
+.t13 .in{padding-bottom:12mm}.t13 .no{color:#fff}
+
+/* 14 Taman: bunga, tepi rumput bergerigi, bingkai hijau (palet pada kelopak) */
+.t14{--bg0:#f1fbe6;--a:#1f5d2a;--t:#24502b;border:1.2mm solid #6bbf59;border-radius:4mm}
+.t14::before{width:3.4mm;height:3.4mm;border-radius:50%;background:#ffd43b;top:7mm;left:8mm;box-shadow:0 -3.4mm 0 .2mm var(--c),0 3.4mm 0 .2mm var(--c),-3.4mm 0 0 .2mm var(--c),3.4mm 0 0 .2mm var(--c)}
+.t14::after{left:0;right:0;bottom:0;height:7mm;background:radial-gradient(ellipse 1.3mm 4.6mm at 50% 100%,#4fa23f 97%,transparent 100%) 1.5mm 0/3mm 7mm repeat-x,radial-gradient(ellipse 1.3mm 6mm at 50% 100%,#6bbf59 97%,transparent 100%) 0 0/3mm 7mm repeat-x,linear-gradient(#6bbf59,#6bbf59) 0 100%/100% 1.6mm no-repeat}
+.t14 .in::before{content:"";position:absolute;width:2.4mm;height:2.4mm;border-radius:50%;background:#fff;right:8mm;top:10mm;z-index:-1;box-shadow:0 -2.4mm 0 .1mm var(--lt),0 2.4mm 0 .1mm var(--lt),-2.4mm 0 0 .1mm var(--lt),2.4mm 0 0 .1mm var(--lt)}
+.t14 .in{padding:8mm 6mm 10mm}
+
+/* 15 Neon: garis neon bercahaya, lantai grid ala synthwave (palet) */
+.t15{--bg0:#0b0919;--t:#fff;--a:var(--lt);border:.7mm solid var(--lt);border-radius:3mm}
+.t15::before{inset:2.2mm;border:.25mm solid var(--lt);opacity:.55;border-radius:1.8mm}
+.t15::after{left:0;right:0;bottom:0;height:18mm;background:linear-gradient(var(--lt) .22mm,transparent .22mm) 0 0/100% 3.6mm,linear-gradient(90deg,var(--lt) .22mm,transparent .22mm) 0 0/7mm 100%;opacity:.22}
+.t15 .in::before{content:"";position:absolute;left:9mm;right:9mm;bottom:8.4mm;height:.4mm;background:#ff2bd6;box-shadow:0 0 2mm #ff2bd6;z-index:-1}
+.t15 .ar{text-shadow:0 0 1.6mm var(--lt),0 0 3.4mm var(--lt)}.t15 .idn{text-shadow:0 0 1.2mm rgba(255,255,255,.6)}
+.t15 .in{padding-bottom:11mm}.t15 .no{color:#fff}
+
+/* 16 Luar Angkasa: planet bercincin, nebula dan bintang (palet pada planet) */
+.t16{--bg0:radial-gradient(circle at 78% 18%,rgba(255,255,255,.14),transparent 38%),linear-gradient(#070b26,#2a1860);--t:#e9e7ff;--a:#fff}
+.t16::before{width:15mm;height:15mm;border-radius:50%;background:radial-gradient(circle at 32% 30%,#fff,var(--lt) 38%,var(--c));top:5mm;right:6mm}
+.t16::after{width:30mm;height:7mm;border:.8mm solid #ffd76a;border-radius:50%;top:9mm;right:-1mm;transform:rotate(-20deg);opacity:.9}
+.t16 .in::before{content:"";position:absolute;width:1mm;height:1mm;border-radius:50%;background:#fff;top:6mm;left:6mm;z-index:-1;box-shadow:14mm 16mm 0 #fff,34mm 4mm 0 -.2mm #fff,8mm 42mm 0 #fff,30mm 56mm 0 -.2mm #fff,44mm 38mm 0 #fff,20mm 30mm 0 -.3mm #fff}
+.t16 .in{padding-top:16mm}
+
+/* 17 Sakura: bunga lima kelopak, gradasi merah muda lembut */
+.t17{--bg0:linear-gradient(160deg,#fffafc,#ffe4ee);--a:#7a2e4d;--t:#7a2e4d;border:1mm solid #f4b6c8;border-radius:5mm}
+.t17::before{width:2.2mm;height:2.2mm;border-radius:50%;background:#e8749a;top:8mm;left:9mm;box-shadow:0 -2.6mm 0 .8mm #f7b9cd,2.47mm -.8mm 0 .8mm #f7b9cd,1.53mm 2.1mm 0 .8mm #f7b9cd,-1.53mm 2.1mm 0 .8mm #f7b9cd,-2.47mm -.8mm 0 .8mm #f7b9cd}
+.t17::after{width:2.2mm;height:2.2mm;border-radius:50%;background:#e8749a;bottom:9mm;right:10mm;transform:scale(1.6);box-shadow:0 -2.6mm 0 .8mm #fbd0dd,2.47mm -.8mm 0 .8mm #fbd0dd,1.53mm 2.1mm 0 .8mm #fbd0dd,-1.53mm 2.1mm 0 .8mm #fbd0dd,-2.47mm -.8mm 0 .8mm #fbd0dd}
+.t17 .in::before{content:"";position:absolute;width:2.2mm;height:2.2mm;border-radius:50%;background:#e8749a;top:16mm;right:9mm;transform:scale(.7);z-index:-1;box-shadow:0 -2.6mm 0 .8mm #f9c9d9,2.47mm -.8mm 0 .8mm #f9c9d9,1.53mm 2.1mm 0 .8mm #f9c9d9,-1.53mm 2.1mm 0 .8mm #f9c9d9,-2.47mm -.8mm 0 .8mm #f9c9d9}
+
+/* 18 Zamrud & Emas: jendela lengkung bergaris emas, bintang di puncak */
+.t18{--bg0:linear-gradient(#0d5c45,#07382b);--t:#f6e7b4;--a:#ffe08a;border:.6mm solid #e0b84c}
+.t18::before{inset:3mm;border:.45mm solid #e0b84c;border-radius:24mm 24mm 2mm 2mm}
+.t18::after{inset:5mm;border:.2mm solid rgba(224,184,76,.7);border-radius:21mm 21mm 1mm 1mm}
+.t18 .in::before,.t18 .in::after{content:"";position:absolute;width:4.6mm;height:4.6mm;border:.4mm solid #e0b84c;top:7.2mm;left:50%;margin-left:-2.3mm;z-index:-1}
+.t18 .in::after{transform:rotate(45deg)}
+.t18 .in{padding-top:15mm}
+
+/* 19 Awan & Rumput: langit biru, matahari, awan, bukit berlapis */
+.t19{--bg0:linear-gradient(#78c9ff,#dff4ff 70%);--t:#0d4a75;--a:#0b3d63}
+.t19::before{width:11mm;height:11mm;border-radius:50%;background:#fff;top:5mm;left:6mm;box-shadow:9mm 2mm 0 -.5mm #fff,4.5mm 5mm 0 -1.5mm #fff,15mm 5mm 0 -3mm #fff}
+.t19::after{left:-12%;width:124%;height:20mm;border-radius:50%;background:#7bd389;bottom:-12mm}
+.t19 .in::before{content:"";position:absolute;left:36%;width:90%;height:16mm;border-radius:50%;background:#5cbf6e;bottom:-10mm;z-index:-1}
+.t19 .in::after{content:"";position:absolute;width:8mm;height:8mm;border-radius:50%;background:#ffe27a;top:6mm;right:7mm;z-index:-1;box-shadow:0 0 0 1.4mm rgba(255,226,122,.45)}
+.t19 .in{padding:8mm 6mm 11mm}
+
+/* 20 Safari: savana senja, matahari besar, pohon akasia */
+.t20{--bg0:linear-gradient(#ffe1a3,#f6bd70 62%,#e29a4a);--t:#4a2d0a;--a:#3b2406;border:1.2mm solid #8a5a1c;border-radius:3mm}
+.t20::before{width:20mm;height:20mm;border-radius:50%;background:#ee8a2b;right:8mm;bottom:12mm;opacity:.9}
+.t20::after{left:0;right:0;bottom:0;height:9mm;background:#6b3f14}
+.t20 .in::before{content:"";position:absolute;width:22mm;height:5.4mm;border-radius:50%;background:#3d5a1c;left:9mm;bottom:15mm;z-index:-1}
+.t20 .in::after{content:"";position:absolute;width:1.4mm;height:9mm;background:#4a2d0a;left:19.3mm;bottom:9mm;z-index:-1}
+.t20 .in{padding:7mm 6mm 13mm}.t20 .no{color:#f6dcb0}
+
+/* 21 Arcade Retro: kisi piksel, bingkai titik, deretan blok (palet) */
+.t21{--bg0:linear-gradient(rgba(255,255,255,.07) .25mm,transparent .25mm) 0 0/3mm 3mm,linear-gradient(90deg,rgba(255,255,255,.07) .25mm,transparent .25mm) 0 0/3mm 3mm,#1a1240;--t:#fff;--a:#ffe14d;border:1.2mm solid var(--lt);border-radius:1mm}
+.t21::before{inset:2.2mm;border:.7mm dotted var(--c)}
+.t21::after{left:6mm;right:6mm;bottom:4.2mm;height:2mm;background:repeating-linear-gradient(90deg,var(--lt),var(--lt) 2mm,transparent 2mm,transparent 4mm)}
+.t21 .in{padding:7mm 7mm 11mm}.t21 .no{bottom:7.4mm;color:var(--lt);opacity:.85}
+
+/* 22 Permen: lapisan gula leleh dan taburan warna-warni (palet) */
+.t22{--bg0:#fff7ee;--a:var(--dk);--t:var(--dk);border-radius:4mm}
+.t22::before{left:0;right:0;top:0;height:11mm;background:radial-gradient(circle at 4mm 7mm,var(--c) 2.8mm,transparent 2.9mm) 0 0/12mm 11mm repeat-x,linear-gradient(var(--c),var(--c)) 0 0/100% 7mm no-repeat}
+.t22::after{width:3.4mm;height:1.1mm;border-radius:.6mm;background:var(--dk);left:6mm;bottom:8mm;box-shadow:12mm 4mm 0 var(--lt),70mm 1mm 0 var(--c),82mm -5mm 0 #ffd43b,5mm -9mm 0 var(--c),76mm 12mm 0 var(--dk)}
+.t22 .in::after{content:"";position:absolute;width:3.4mm;height:1.1mm;border-radius:.6mm;background:var(--c);right:8mm;bottom:15mm;transform:rotate(55deg);z-index:-1;box-shadow:-8mm 7mm 0 var(--dk),-72mm 2mm 0 #ffd43b,-79mm -8mm 0 var(--c)}
+.t22 .in{padding:13mm 6mm 8mm}
+
+/* 23 Batik Sogan: motif kawung mengelilingi panel krem */
+.t23{--bg0:#f1ddb5;--t:#4a2a10;--a:#3b1f0a;border:2mm double #6b3e1d}
+.t23::before{inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cg fill='none' stroke='%236b3e1d' stroke-width='1.1' stroke-opacity='.55'%3E%3Cellipse cx='13' cy='6.5' rx='3.2' ry='6.5'/%3E%3Cellipse cx='13' cy='19.5' rx='3.2' ry='6.5'/%3E%3Cellipse cx='6.5' cy='13' rx='6.5' ry='3.2'/%3E%3Cellipse cx='19.5' cy='13' rx='6.5' ry='3.2'/%3E%3C/g%3E%3C/svg%3E") 0 0/9mm 9mm}
+.t23 .in{margin:6mm;height:calc(100% - 12mm);background:#f9efd6;border:.4mm solid #6b3e1d;border-radius:1mm;padding:5mm}
+.t23 .no{bottom:7.4mm}
+
+/* 24 Aurora Kaca: cahaya aurora hijau-biru-ungu dengan panel kaca buram */
+.t24{--bg0:radial-gradient(circle at 18% 12%,rgba(0,245,160,.6),transparent 48%),radial-gradient(circle at 88% 34%,rgba(0,163,255,.55),transparent 52%),radial-gradient(circle at 40% 105%,rgba(176,84,255,.65),transparent 58%),#0b1030;--t:#fff;--a:#fff}
+.t24::after{inset:4mm;border-radius:5mm;background:linear-gradient(120deg,rgba(255,255,255,.2),rgba(255,255,255,0) 35%);z-index:2}
+.t24 .in{margin:4mm;height:calc(100% - 8mm);background:rgba(255,255,255,.14);border:.3mm solid rgba(255,255,255,.6);border-radius:5mm}
 .t24 .no{bottom:5.5mm}.t24 .ar,.t24 .idn{text-shadow:0 .3mm 1mm rgba(0,0,0,.3)}
 
+/* 25 Kertas Vintage: kertas menua, bingkai putus-putus, noda kopi */
+.t25{--bg0:radial-gradient(ellipse at 50% 46%,#faf0d9,#f2e3c0 62%,#e4cf9f);--a:#4a3520;--t:#4a3520;border:1mm double #8a6d3b}
+.t25::before{inset:2.6mm;border:.35mm dashed #8a6d3b}
+.t25::after{width:19mm;height:19mm;border-radius:50%;border:1.1mm solid rgba(120,84,36,.18);right:-4mm;bottom:-4mm;box-shadow:0 0 0 2.5mm rgba(120,84,36,.07)}
+.t25 .in::before{content:"";position:absolute;left:50%;bottom:6.6mm;width:1.3mm;height:1.3mm;margin-left:-.65mm;border-radius:50%;background:#8a6d3b;opacity:.7;z-index:-1;box-shadow:-3mm 0 0 #8a6d3b,3mm 0 0 #8a6d3b}
+.t25 .in{padding-bottom:10mm}
+
+/* 26 Pastel Lembut: noda warna pastel organik, bingkai titik putih */
+.t26{--bg0:#fdf6fb;--a:#5a4a6a;--t:#5a4a6a;border-radius:6mm}
+.t26::before{width:46mm;height:40mm;top:-14mm;left:-12mm;background:radial-gradient(circle at 40% 40%,#ffd3e3,rgba(255,211,227,0) 70%)}
+.t26::after{width:44mm;height:38mm;bottom:-13mm;right:-12mm;background:radial-gradient(circle at 60% 60%,#cfe6ff,rgba(207,230,255,0) 70%)}
+.t26 .in::before{content:"";position:absolute;width:30mm;height:26mm;bottom:-6mm;left:-4mm;z-index:-1;background:radial-gradient(circle at 50% 50%,#d9fbe3,rgba(217,251,227,0) 70%)}
+.t26 .in{margin:4mm;height:calc(100% - 8mm);border:.55mm dotted #fff;border-radius:4mm;background:rgba(255,255,255,.35)}
+.t26 .no{bottom:5.6mm}
+
+/* 27 Langit & Awan: pagi hangat, tumpukan awan dua lapis */
+.t27{--bg0:radial-gradient(circle at 15% 10%,rgba(255,236,200,.9),transparent 34%),linear-gradient(#9fd8ff,#e9f6ff);--a:#0f3f66;--t:#0f3f66}
+.t27::before{left:0;right:0;bottom:0;height:26mm;background:radial-gradient(circle at 8% 100%,#e8f4ff 9mm,transparent 9.1mm),radial-gradient(circle at 30% 100%,#e8f4ff 13mm,transparent 13.1mm),radial-gradient(circle at 56% 100%,#e8f4ff 10mm,transparent 10.1mm),radial-gradient(circle at 80% 100%,#e8f4ff 14mm,transparent 14.1mm),radial-gradient(circle at 98% 100%,#e8f4ff 9mm,transparent 9.1mm)}
+.t27::after{left:0;right:0;bottom:0;height:17mm;background:radial-gradient(circle at 16% 100%,#fff 8mm,transparent 8.1mm),radial-gradient(circle at 42% 100%,#fff 11mm,transparent 11.1mm),radial-gradient(circle at 68% 100%,#fff 8mm,transparent 8.1mm),radial-gradient(circle at 92% 100%,#fff 11mm,transparent 11.1mm)}
+.t27 .in::before{content:"";position:absolute;width:6mm;height:6mm;border-radius:50%;background:#fff;top:6mm;right:9mm;z-index:-1;box-shadow:5mm 1.4mm 0 -.4mm #fff,-4.6mm 1.8mm 0 -1mm #fff}
+.t27 .in{padding:8mm 6mm 14mm}
+
+/* 28 Kertas Kraft: label tag berlubang bertali, plat keterangan bergaris putus */
+.t28{--bg0:radial-gradient(rgba(90,60,25,.16) 18%,transparent 22%) 0 0/2.2mm 2.2mm,#d6b383;--a:#3b2a17;--t:#3b2a17}
+.t28::before{width:5mm;height:5mm;border-radius:50%;border:.6mm solid #7a5a34;background:#efe2c7;top:3.4mm;left:50%;margin-left:-2.5mm}
+.t28::after{width:.7mm;height:11mm;background:#9b7647;top:-5mm;left:50%;margin-left:-.35mm}
+.t28 .in::before{content:"";position:absolute;inset:3mm;border:.5mm dashed rgba(255,255,255,.7);z-index:-1}
+.t28 .in{padding:12mm 7mm 9mm}
+.t28 .fb{background:rgba(255,255,255,.55);border:.3mm dashed #7a5a34;border-radius:2mm}
+
+/* 29 Papan Tulis: papan hitam, garis kapur putus-putus, bekas hapusan */
+.t29{--bg0:radial-gradient(circle at 25% 20%,rgba(255,255,255,.07),transparent 40%),radial-gradient(circle at 75% 80%,rgba(255,255,255,.05),transparent 45%),#1d2825;--a:#fff;--t:#f1f1e6;border:1.6mm solid #7a5a3a}
+.t29::before{inset:2.6mm;border:.35mm solid rgba(255,255,255,.75);border-radius:1.2mm}
+.t29::after{inset:3.8mm;border:.2mm dashed rgba(255,255,255,.35);border-radius:.8mm}
+.t29 .in::before{content:"";position:absolute;left:8mm;right:8mm;bottom:8mm;height:1.6mm;z-index:-1;background:radial-gradient(circle at .8mm .8mm,rgba(255,255,255,.75) .45mm,transparent .5mm) 0 0/2.2mm 1.6mm repeat-x}
+.t29 .in::after{content:"";position:absolute;right:8mm;top:8mm;width:13mm;height:5mm;border-radius:50%;background:rgba(255,255,255,.08);transform:rotate(-12deg);z-index:-1}
+.t29 .ar,.t29 .idn{text-shadow:0 0 1.2mm rgba(255,255,255,.25)}
+.t29 .in{padding-bottom:11mm}
+
+/* 30 Mint Segar: daun mint bertingkat dan setetes embun */
+.t30{--bg0:linear-gradient(160deg,#f4fffb,#d5f7e8);--a:#0d6b52;--t:#0d6b52;border:.7mm solid #7fdcbc;border-radius:4mm}
+.t30::before{width:20mm;height:11mm;background:#58c9a0;border-radius:0 100% 0 100%;top:2mm;right:2mm;transform:rotate(-14deg);box-shadow:-10mm 7mm 0 -2mm #8be0bf}
+.t30::after{width:17mm;height:9mm;background:#38b389;border-radius:100% 0 100% 0;bottom:3mm;left:3mm;transform:rotate(-14deg);box-shadow:8mm -6mm 0 -2mm #8be0bf}
+.t30 .in::before{content:"";position:absolute;width:3mm;height:3mm;border-radius:50% 50% 50% 0;background:#b9f1dc;transform:rotate(-45deg);left:9mm;top:10mm;z-index:-1}
+
+/* penyesuaian untuk "Warnai latar kartu" (.tbd gelap / .tbl terang) */
+.card.t7.tbd .fb{background:transparent}
+.card.t28.tbd .fb{background:rgba(0,0,0,.22)}
+.card.t23.tbd::before,.card.t23.tbl::before{opacity:.4}
+
+/* 2 Arabic Classroom: papan tulis hijau berbingkai kayu + rak kapur (palet) */
+
+/* 3 Islamic Geometry: roset bintang delapan di belakang teks + bingkai ganda (palet) */
+
+/* 4 Minimal: ruang kosong luas, indeks kecil, satu aksen warna (palet) */
+
+/* 5 Modern: dua seperempat lingkaran berlawanan pojok (palet) */
+
+/* 6 Cartoon: stiker komik, titik halftone, bayangan keras (palet) */
+
+/* 7 Picture Card: foto ditempel dengan lakban, plat keterangan berwarna (palet) */
+
+/* 8 Premium Arabic: biru malam, bingkai emas, siku emas dan ornamen berlian */
+
+/* 9 Malam Masjid: jendela lengkung, bulan sabit, bintang, siluet kubah dan menara */
+
+/* 10 Laut & Gelembung: air bertingkat dan gelembung naik */
+
+/* 11 Pelangi: pelangi enam lajur dengan awan di kaki (palet pada bingkai) */
+
+/* 12 Buku Tulis: kertas bergaris, margin merah, lubang binder, selotip (palet pada selotip) */
+
+/* 13 Senja: langit gradasi ungu ke jingga, matahari terbenam, bukit siluet */
+
+/* 14 Taman: bunga, tepi rumput bergerigi, bingkai hijau (palet pada kelopak) */
+
+/* 15 Neon: garis neon bercahaya, lantai grid ala synthwave (palet) */
+
+/* 16 Luar Angkasa: planet bercincin, nebula dan bintang (palet pada planet) */
+
+/* 17 Sakura: bunga lima kelopak, gradasi merah muda lembut */
+
+/* 18 Zamrud & Emas: jendela lengkung bergaris emas, bintang di puncak */
+
+/* 19 Awan & Rumput: langit biru, matahari, awan, bukit berlapis */
+
+/* 20 Safari: savana senja, matahari besar, pohon akasia */
+
+/* 21 Arcade Retro: kisi piksel, bingkai titik, deretan blok (palet) */
+
+/* 22 Permen: lapisan gula leleh dan taburan warna-warni (palet) */
+
+/* 23 Batik Sogan: motif kawung mengelilingi panel krem */
+
+/* 24 Aurora Kaca: cahaya aurora hijau-biru-ungu dengan panel kaca buram */
+
+/* 25 Kertas Vintage: kertas menua, bingkai putus-putus, noda kopi */
+
+/* 26 Pastel Lembut: noda warna pastel organik, bingkai titik putih */
+
+/* 27 Langit & Awan: pagi hangat, tumpukan awan dua lapis */
+
+/* 28 Kertas Kraft: label tag berlubang bertali, plat keterangan bergaris putus */
+
+/* 29 Papan Tulis: papan hitam, garis kapur putus-putus, bekas hapusan */
+
+/* 30 Mint Segar: daun mint bertingkat dan setetes embun */
+
+/* 2 Arabic Classroom: papan tulis hijau berbingkai kayu + rak kapur (palet) */
+
+/* 3 Islamic Geometry: roset bintang delapan di belakang teks + bingkai ganda (palet) */
+
+/* 4 Minimal: ruang kosong luas, indeks kecil, satu aksen warna (palet) */
+
+/* 5 Modern: dua seperempat lingkaran berlawanan pojok (palet) */
+
+/* 6 Cartoon: stiker komik, titik halftone, bayangan keras (palet) */
+
+/* 7 Picture Card: foto ditempel dengan lakban, plat keterangan berwarna (palet) */
+
+/* 8 Premium Arabic: biru malam, bingkai emas, siku emas dan ornamen berlian */
+
+/* 9 Malam Masjid: jendela lengkung, bulan sabit, bintang, siluet kubah dan menara */
+
+/* 10 Laut & Gelembung: air bertingkat dan gelembung naik */
+
+/* 11 Pelangi: pelangi enam lajur dengan awan di kaki (palet pada bingkai) */
+
+/* 12 Buku Tulis: kertas bergaris, margin merah, lubang binder, selotip (palet pada selotip) */
+
+/* 13 Senja: langit gradasi ungu ke jingga, matahari terbenam, bukit siluet */
+
+/* 14 Taman: bunga, tepi rumput bergerigi, bingkai hijau (palet pada kelopak) */
+
+/* 15 Neon: garis neon bercahaya, lantai grid ala synthwave (palet) */
+
+/* 16 Luar Angkasa: planet bercincin, nebula dan bintang (palet pada planet) */
+
+/* 17 Sakura: bunga lima kelopak, gradasi merah muda lembut */
+
+/* 18 Zamrud & Emas: jendela lengkung bergaris emas, bintang di puncak */
+
+/* 19 Awan & Rumput: langit biru, matahari, awan, bukit berlapis */
+
+/* 20 Safari: savana senja, matahari besar, pohon akasia */
+
+/* 21 Arcade Retro: kisi piksel, bingkai titik, deretan blok (palet) */
+
+/* 22 Permen: lapisan gula leleh dan taburan warna-warni (palet) */
+
+/* 23 Batik Sogan: motif kawung mengelilingi panel krem */
+
+/* 24 Aurora Kaca: cahaya aurora hijau-biru-ungu dengan panel kaca buram */
+
+/* 25 Kertas Vintage: kertas menua, bingkai putus-putus, noda kopi */
+
+/* 26 Pastel Lembut: noda warna pastel organik, bingkai titik putih */
+
+/* 27 Langit & Awan: pagi hangat, tumpukan awan dua lapis */
+
+/* 28 Kertas Kraft: label tag berlubang bertali, plat keterangan bergaris putus */
+
+/* 29 Papan Tulis: papan hitam, garis kapur putus-putus, bekas hapusan */
+
+/* 30 Mint Segar: daun mint bertingkat dan setetes embun */
+
 /* ===== TEMPLATE TAMBAHAN 25-60 ===== */
-.t25{--bg0:#f6ecd6;--a:#4a3520;--t:#4a3520;border:1mm double #8a6d3b}.t25::before{top:2.4mm;left:2.4mm;right:2.4mm;bottom:2.4mm;border:.25mm dashed #8a6d3b}
-.t26{--bg0:linear-gradient(135deg,#ffe3ec,#e3f0ff 55%,#e6ffe9);--a:#5a4a6a;--t:#5a4a6a;border:.8mm solid #fff;border-radius:6mm}.t26::before{width:22mm;height:22mm;border-radius:50%;background:rgba(255,255,255,.55);top:-7mm;left:-7mm}.t26::after{width:16mm;height:16mm;border-radius:50%;background:rgba(255,255,255,.5);bottom:-5mm;right:-5mm}
-.t27{--bg0:linear-gradient(#a9dcff,#eaf7ff);--a:#0f3f66;--t:#0f3f66}.t27::before{width:13mm;height:13mm;border-radius:50%;background:#fff;bottom:-4mm;left:5mm;box-shadow:10mm 2mm 0 2mm #fff,20mm 4mm 0 -1mm #fff,-2mm 4mm 0 -3mm #fff}.t27::after{width:8mm;height:8mm;border-radius:50%;background:#fff;top:5mm;right:9mm;box-shadow:6mm 1.5mm 0 1mm #fff,-5mm 2mm 0 -1mm #fff;opacity:.9}
-.t28{--bg0:#d9b98c;--a:#3b2a17;--t:#3b2a17}.t28::before{top:2.6mm;left:2.6mm;right:2.6mm;bottom:2.6mm;border:.4mm dashed #7a5a34}.t28::after{width:14mm;height:5mm;background:rgba(255,255,255,.55);top:-1mm;left:50%;margin-left:-7mm;transform:rotate(-2deg)}.t28 .in{padding-top:9mm}
-.t29{--bg0:#24352d;--a:#fff;--t:#f1f1e6;border:1.8mm solid #8a6a43}.t29::before{top:2.4mm;left:2.4mm;right:2.4mm;bottom:2.4mm;border:.3mm dashed rgba(255,255,255,.4);border-radius:1.5mm}.t29 .ar,.t29 .idn{text-shadow:0 0 1.2mm rgba(255,255,255,.25)}
-.t30{--bg0:#eafff6;--a:#0d6b52;--t:#0d6b52;border:.7mm solid #7fdcbc;border-radius:4mm}.t30::before{width:24mm;height:24mm;border-radius:50%;background:#bff3de;top:-9mm;left:-9mm}.t30::after{width:130%;left:-15%;height:14mm;border-radius:50%;background:#c9f5e4;bottom:-8mm}
+
 .t31{--bg0:linear-gradient(#f1e8ff,#dcd0ff);--a:#4b3a8a;--t:#4b3a8a;border-radius:5mm}.t31::before{width:20mm;height:20mm;border-radius:50%;background:rgba(255,255,255,.55);top:-6mm;right:-6mm}.t31::after{width:12mm;height:12mm;border-radius:50%;background:rgba(139,108,224,.25);bottom:-3mm;left:-3mm}
 .t32{--bg0:linear-gradient(160deg,#fff1e6,#ffd6c2);--a:#8a3b1e;--t:#8a3b1e}.t32::before{top:0;left:0;right:0;height:3mm;background:var(--c)}.t32::after{width:22mm;height:22mm;border-radius:50%;background:rgba(255,255,255,.4);bottom:-8mm;right:-8mm}.t32 .in{padding-top:8mm}
 .t33{--bg0:#fff;--a:#111;--t:#111;border:.4mm solid #111}.t33::before{top:2mm;left:2mm;right:2mm;bottom:2mm;border:.2mm solid #111}.t33::after{width:3mm;height:3mm;background:#111;transform:rotate(45deg);top:4mm;left:50%;margin-left:-1.5mm}.t33 .in{padding-top:9mm}
