@@ -438,8 +438,11 @@ $('pal').innerHTML=PAL.map((p,i)=>`<option value="${i}">${p[0]}</option>`).join(
 (()=>{let d=null;try{d=localStorage.getItem('afm-dk')}catch(e){}if(d===null)d=matchMedia('(prefers-color-scheme: dark)').matches?'1':'0';document.body.classList.toggle('dark',d==='1')})();
 $('dk').onclick=()=>{const d=document.body.classList.toggle('dark');try{localStorage.setItem('afm-dk',d?'1':'0')}catch(e){}};
 $('mk').onclick=makeCards;$('lang').addEventListener('input',renderDataTable);
-S.zoom=innerWidth<700?.4:.5;$('zm').value=S.zoom*100;
+S.zoom=innerWidth<700?.4:innerWidth>=1100?.6:.5;$('zm').value=S.zoom*100;
 loadLocal();if(!S.cards.length)renderPreview();
+/* UX: panduan format menutup sendiri begitu sudah ada data; Ctrl/Cmd+Enter = Buat Flashcard */
+if(S.cards.length)$('gd').open=false;
+$('inp').addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();makeCards()}});
 
 /* ---------- OFFLINE (hanya web; di APK semua berkas sudah lokal) ---------- */
 if('serviceWorker' in navigator&&!NATIVE&&/^https?:$/.test(location.protocol))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
