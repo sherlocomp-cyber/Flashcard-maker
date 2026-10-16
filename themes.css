@@ -1,0 +1,30 @@
+/* ===== TEMA PETUALANGAN & PAHLAWAN 91-97 (desain orisinal, tanpa karakter/logo pihak lain) ===== */
+.t91{--bg0:linear-gradient(#f5e6bd,#e8cf94);--a:#3b2410;--t:#3b2410;border:1.4mm solid #6b3f1d;border-radius:2mm}
+.t91::before{inset:2.2mm;border:.4mm dashed #8a5a2b}
+.t91::after{left:0;right:0;bottom:0;height:8mm;background:radial-gradient(circle at 4mm 8mm,#1d6fa5 3.6mm,transparent 3.7mm) 0 0/8mm 8mm repeat-x}
+.t91 .in{padding-bottom:12mm}.t91 .in::before{content:"\2715";position:absolute;top:3.5mm;right:4.5mm;font:700 6mm/1 serif;color:#b23a3a;opacity:.85}
+.t91 .no{bottom:1.2mm;color:#fff;opacity:.9}
+.t92{--bg0:linear-gradient(160deg,#1b1b26,#0c0c12);--t:#e9e9f0;--a:#fff;border:.5mm solid #d0262d;border-radius:2mm}
+.t92::before{width:11mm;height:11mm;top:3.5mm;right:3.5mm;background:#c4c7d4;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
+.t92::after{left:-10%;right:-10%;bottom:7mm;height:2.2mm;background:#d0262d;transform:rotate(-5deg)}
+.t92 .in{padding-bottom:13mm}.t92 .no{color:#fff}
+.t93{--bg0:#fff6dc;--a:#1c3f94;--t:#1c3f94;border:1mm solid #111;border-radius:1.5mm}
+.t93::before{inset:0;background:repeating-conic-gradient(from 90deg at 100% 0,transparent 0 6deg,rgba(214,40,40,.2) 6deg 6.7deg),repeating-radial-gradient(circle at 100% 0,transparent 0 6mm,rgba(214,40,40,.2) 6mm 6.4mm)}
+.t93::after{left:0;right:0;bottom:0;height:13mm;background:#1c3f94;clip-path:polygon(0 100%,0 55%,8% 55%,8% 28%,16% 28%,16% 60%,24% 60%,24% 12%,34% 12%,34% 50%,44% 50%,44% 34%,54% 34%,54% 66%,66% 66%,66% 18%,76% 18%,76% 55%,88% 55%,88% 40%,100% 40%,100% 100%)}
+.t93 .in{padding-bottom:15mm}.t93 .no{color:#fff;bottom:1.4mm}
+.t94{--bg0:#e9edf2;--a:#1f2a37;--t:#1f2a37;border:.8mm solid #44505e;border-radius:2mm}
+.t94::before{top:0;left:0;right:0;height:4mm;background:repeating-linear-gradient(45deg,#f2b705 0 3mm,#222 3mm 6mm)}
+.t94::after{bottom:0;left:0;right:0;height:4mm;background:repeating-linear-gradient(45deg,#f2b705 0 3mm,#222 3mm 6mm)}
+.t94 .in{padding:8mm 6mm}.t94 .no{bottom:4.6mm}
+.t95{--bg0:linear-gradient(#2a1650,#4a2a86);--t:#efe6ff;--a:#ffe9a8;border:.6mm solid #d6b04c;border-radius:3mm}
+.t95::before{width:6mm;height:6mm;top:3.5mm;left:50%;margin-left:-3mm;background:#ffe9a8;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%)}
+.t95::after{width:3mm;height:3mm;top:9mm;right:7mm;background:#ffe9a8;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%)}
+.t95 .in{padding-top:12mm}
+.t96{--bg0:linear-gradient(#ffd9a0,#f08a5d 58%,#7a2e4d);--a:#2b1b2e;--t:#2b1b2e;border-radius:2mm}
+.t96::before{width:30mm;height:30mm;border-radius:50%;background:#e23b3b;opacity:.9;top:-9mm;left:50%;margin-left:-15mm}
+.t96::after{left:0;right:0;bottom:0;height:15mm;background:#2b1b2e;clip-path:polygon(0 100%,0 62%,18% 28%,34% 64%,52% 12%,72% 62%,86% 36%,100% 66%,100% 100%)}
+.t96 .in{padding-bottom:16mm}.t96 .no{color:#fff;bottom:1.4mm}
+.t97{--bg0:#eaf3d2;--a:#2d4a1e;--t:#2d4a1e;border:1mm solid #4b8f3a;border-radius:3mm}
+.t97::before{top:0;left:0;right:0;height:5mm;background:linear-gradient(135deg,#4b8f3a 25%,transparent 25%) -3mm 0/6mm 6mm,linear-gradient(225deg,#4b8f3a 25%,transparent 25%) -3mm 0/6mm 6mm}
+.t97::after{width:130%;left:-15%;height:20mm;border-radius:50%;background:#a8814a;bottom:-12mm}
+.t97 .in{padding:8mm 6mm 9mm}.t97 .no{color:#fff;bottom:1.4mm}
